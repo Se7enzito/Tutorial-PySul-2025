@@ -1,0 +1,31 @@
+# Ignorar caches do Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignorar ambientes virtuais
+venv/
+env/
+
+# Ignorar arquivos de configuração locais
+*.env
+*.ini
+*.cfg
+*.toml
+
+# Ignorar arquivos de logs e dados temporários
+*.log
+*.tmp
+*.bak
+
+# Ignorar arquivos do Jupyter
+.ipynb_checkpoints/
+
+# Ignorar arquivos do sistema
+.DS_Store
+Thumbs.db
+
+# Ignorar arquivos de build e distribuição
+build/
+dist/
+*.egg-info/
