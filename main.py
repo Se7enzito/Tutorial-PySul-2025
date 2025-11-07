@@ -621,3 +621,6 @@ if __name__ == '__main__':
     segundos = duracao % 60
 
     print(f"Tempo de execução: {horas} h {minutos} min {segundos:.2f} s")
+    
+    # TODO: Melhorar a Analise de Sentimentos colocando os conceitos que eu falar no roteiro da palestra
+    # TODO: Refazer a classe App com os seguintes focos: Transformar a ideia do app, fazendo com que ele sempre trate o csv caso ele ja não tenha sido tratado e melhore os gráficos
