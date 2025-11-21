@@ -8,12 +8,13 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-from wordcloud import WordCloud, STOPWORDS
 from tqdm import tqdm
 from textblob import TextBlob
-from nltk.sentiment.vader import SentimentIntensityAnalyzer
-from deep_translator import GoogleTranslator
 from langdetect import detect
+from wordcloud import WordCloud, STOPWORDS
+from deep_translator import GoogleTranslator
+from sklearn.feature_extraction.text import TfidfVectorizer
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.dirname(BASE_DIR)
@@ -53,21 +54,22 @@ class TextAPI():
     @staticmethod
     def limpar_texto(texto: str) -> str:
         if not isinstance(texto, str):
-            return "N/A"
+            return None
         
         texto = texto.lower()
         
-        texto = re.sub(r"http\\S+", "", texto)
+        texto = re.sub(r"http\S+", "", texto)
         texto = re.sub(r"@[A-Za-z0-9_]+", "", texto)
-        texto = re.sub(r"[^a-zà-ÿ# ]", "", texto)
+        texto = re.sub(r"[^a-zà-ÿ ]", "", texto)
         
-        return texto
+        return texto.strip()
 
 class DataAPI():
     def __init__(self):
         self.PASTA_BASE = os.path.join(BASE_DIR, 'data', 'datasets', 'treinado')
         self.PASTA_BASE_N = os.path.join(BASE_DIR, 'data', 'datasets', 'normal')
         self.PASTA_TRATADA = os.path.join(BASE_DIR, 'data', 'datasets', 'tratado')
+        self.tfidf = TfidfVectorizer()
         self.DATASETS = {}
         self.COLUNAS = {}
         self.CONFIG = {
@@ -621,6 +623,3 @@ if __name__ == '__main__':
     segundos = duracao % 60
 
     print(f"Tempo de execução: {horas} h {minutos} min {segundos:.2f} s")
-    
-    # TODO: Melhorar a Analise de Sentimentos colocando os conceitos que eu falar no roteiro da palestra
-    # TODO: Refazer a classe App com os seguintes focos: Transformar a ideia do app, fazendo com que ele sempre trate o csv caso ele ja não tenha sido tratado e melhore os gráficos

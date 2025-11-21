@@ -5,6 +5,5 @@ texto = "A inteligência artificial está mudando o mundo."
 idioma = detect(texto)
 print(idioma)  # Saída: 'pt'
 
-texto = "Artificial intelligence is changing the world."
-traduzido = GoogleTranslator(source='en', target='pt').translate(texto)
+traduzido = GoogleTranslator(source=idioma, target='en').translate(texto)
 print(traduzido)

@@ -1,6 +1,6 @@
 import spacy
 
-nlp = spacy.load("pt_core_news_sm")
+nlp = spacy.load("en_core_web_sm")
 doc = nlp("O ChatGPT foi desenvolvido pela OpenAI.")
 
 for ent in doc.ents:
