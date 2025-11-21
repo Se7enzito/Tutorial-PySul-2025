@@ -1,0 +1,10 @@
+numpy
+pandas
+matplotlib
+nltk
+tqdm
+textblob
+langdetect
+wordcloud
+deep-translator
+scikit-learn
