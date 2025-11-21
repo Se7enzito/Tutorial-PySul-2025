@@ -8,3 +8,5 @@ langdetect
 wordcloud
 deep-translator
 scikit-learn
+spacy
+transformers
